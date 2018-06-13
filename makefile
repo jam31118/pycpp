@@ -7,9 +7,14 @@ BUILD_FLAGS = --inplace
 all: build
 
 build:
+	$(PY) setup.py build_clib
 	$(PY) setup.py build_ext $(BUILD_FLAGS)
 
 clean:
 	$(PY) setup.py clean
-	rm -rf *.so
+	rm -rf build/
+	rm -f *.so
+
+clean-all: clean
+	rm -f *.a
 
