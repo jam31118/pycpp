@@ -5,13 +5,15 @@
 // Declare each module method
 static PyObject *_add_add(PyObject *self, PyObject *args);
 static PyObject *_add_add_int(PyObject *self, PyObject *args);
+static PyObject *_add_hi(PyObject *self, PyObject *args);
 
 //}
 
 // Define an array of module methods
 static PyMethodDef module_methods[] = {
 	{"add", _add_add, METH_VARARGS, "Add doubles"},
-	{"add_int", _add_add_int, METH_VARARGS, "Add doubles"},
+	{"add_int", _add_add_int, METH_VARARGS, "Add int with +1"},
+	{"hi", _add_hi, METH_VARARGS, "Say hello to Python"},
 	{NULL, NULL, 0, NULL}
 };
 
@@ -52,4 +54,12 @@ static PyObject *_add_add_int(PyObject *self, PyObject *args) {
 	PyObject *result_tuple = Py_BuildValue("i", result_value);
 	return result_tuple;
 };
+
+
+static PyObject *_add_hi(PyObject *self, PyObject *args) {
+	hi();
+	Py_INCREF(Py_None);
+	return Py_None;
+}
+
 
