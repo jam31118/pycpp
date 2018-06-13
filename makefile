@@ -4,11 +4,12 @@ BUILD_FLAGS = --inplace
 
 
 ## Define targets
-all: _add
+all: build
 
-_add:
+build:
 	$(PY) setup.py build_ext $(BUILD_FLAGS)
 
 clean:
-	rm -rf build/ *.so
+	$(PY) setup.py clean
+	rm -rf *.so
 
